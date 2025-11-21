@@ -5,7 +5,8 @@
       "Bash(git commit -m \"$(cat <<''EOF''\nAdd Colab-compatible Ch01: Create Animation\n\n- Added attribution header with link to original work\n- Added setup cell with quick_setup(chapter=1)\n- Updated all file paths from relative to Colab paths (/content/ml_animated/)\n- Updated section 1 to note Colab requires no local installation\n- All animation generation and display functionality preserved\n- Chapter ready for testing in Google Colab\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
       "Bash(git commit:*)",
       "Bash(python:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
