@@ -6,7 +6,7 @@ https://github.com/markhliu/ml_animated
 License: MIT License (2022)
 
 This setup.py enables pip installation:
-!pip install git+https://github.com/[your-repo]/ml-animated-colab.git
+!pip install git+https://github.com/jfwallin/ml-animiated-for-colab.git
 """
 
 from setuptools import setup, find_packages
@@ -54,7 +54,7 @@ setup(
     author_email='',  # Add your email if desired
 
     # Repository information
-    url='https://github.com/[your-username]/ml-animated-colab',  # Update with your repo
+    url='https://github.com/jfwallin/ml-animiated-for-colab',
 
     # License
     license='MIT',
