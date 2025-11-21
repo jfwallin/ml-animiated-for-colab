@@ -28,15 +28,17 @@ Pillow>=10.0.0
 scikit-learn>=1.3.0
 
 # Gym/Baselines dependencies - version locked for compatibility
-cloudpickle~=1.2.0
+# Note: cloudpickle 1.2.0 is only needed for Ch16-20 (Baselines)
+# For Ch01-15, we skip this to avoid conflicts with Colab
+# cloudpickle~=1.2.0
 pyglet<=1.5.0,>=1.4.0
 
 # Utilities
 requests>=2.20.0
 
 # Optional but recommended for notebooks
+# Note: Colab has its own ipython, so we don't force a version
 jupyter>=1.0.0
-ipython>=8.0.0
 ipywidgets>=8.0.0
 
 # For Atari games (Ch16-20) - install separately if needed
