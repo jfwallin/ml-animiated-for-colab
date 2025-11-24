@@ -1,0 +1,102 @@
+
+================================================================================
+DATA 1010 - Lab 1: Models, Errors, Loss, Optimization, and Learning
+================================================================================
+
+GROUP INFORMATION:
+  Group Code: 234234
+  Lab Started: 2025-11-23T13:59:24.555735
+  Lab Completed: 2025-11-23T14:03:16.767563
+  Questions Answered: 5/15
+
+================================================================================
+ANSWERS:
+================================================================================
+
+
+Q1: In your own words, what does 'global error' or 'loss' measure in this plot?
+Answer:
+Type your answer here.  JW 1
+--------------------------------------------------------------------------------
+
+Q2: If we changed the slope or intercept of the line, how would that change the loss?
+Answer:
+Type your answer here.  JW 2
+--------------------------------------------------------------------------------
+
+Q3: How do the residual lines (the dashed vertical lines) help you understand the local error at each point?
+Answer:
+Type your answer here.X
+--------------------------------------------------------------------------------
+
+Q4: Can you make the global error small even if a few points still have relatively large errors? Describe a situation where this happens and why.
+Answer:
+Type your answer here.XXX
+--------------------------------------------------------------------------------
+
+Q5: Suppose you add one very extreme outlier point far away from the others. Predict how this will affect the best-fit line and the global error.
+Answer:
+Type your answer here.XXX
+--------------------------------------------------------------------------------
+
+Q6: Describe how your guesses for (m, b) moved over time. Did you follow any systematic strategy?
+Answer:
+Type your answer here.
+--------------------------------------------------------------------------------
+
+Q7: Look at the MSE landscape plot. How close was your best guess to (a) the approximate global minimum on the grid, and (b) the least-squares solution from the data? What does this tell you about optimizing only based on the global error?
+Answer:
+Type your answer here.
+--------------------------------------------------------------------------------
+
+Q8: In our earlier line-fitting exercise, you could see the data, the line, and the residuals. In this game, you only saw the MSE. How is this situation similar to how many machine learning models are trained?
+Answer:
+Type your answer here.
+--------------------------------------------------------------------------------
+
+Q9: What strategies did your group use to choose new values of x within the allowed range?
+Answer:
+Type your answer here.
+--------------------------------------------------------------------------------
+
+Q10: How did the 'warmer/colder' feedback influence your choices?
+Answer:
+Type your answer here.
+--------------------------------------------------------------------------------
+
+Q11: Imagine that even the scatter plot of your guesses was hidden, and you only saw the table of (x, f(x)). Would you still be able to find a good minimum? How?
+Answer:
+Type your answer here.
+--------------------------------------------------------------------------------
+
+Q12: Describe your group's strategy for choosing new (x, y) locations. How did you decide where to sample next after finding a high point?
+Answer:
+Type your answer here.
+--------------------------------------------------------------------------------
+
+Q13: Look at the revealed landscape. How many local peaks can you see? Did your group spend most of its time near one peak, or did you explore multiple regions?
+Answer:
+Type your answer here.
+--------------------------------------------------------------------------------
+
+Q14: Compare your best sample to the true global peak shown on the plot. Were you close to the global maximum, or did you end up stuck near a local maximum?
+Answer:
+Type your answer here.
+--------------------------------------------------------------------------------
+
+Q15: Explain how this mountain-peak search is similar to what happens in machine learning when an algorithm is trying to optimize a loss function that has many 'bumps' (local minima or maxima). What risks does a model face if it only explores one region of the loss landscape?
+Answer:
+Type your answer here.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+GROUP-SPECIFIC PARAMETERS:
+(For instructor verification)
+================================================================================
+  line_slope: 2.277006
+  line_intercept: -1.306851
+  hidden_func_a: 1.148806
+  hidden_func_b: -3.388629
+  hidden_func_c: 3.049551
+  num_mountain_peaks: 5.000000

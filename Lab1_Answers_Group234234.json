@@ -1,0 +1,51 @@
+{
+  "metadata": {
+    "lab_number": 1,
+    "lab_title": "Models, Errors, Loss, Optimization, and Learning",
+    "group_code": 234234,
+    "started_at": "2025-11-23T13:59:24.555735",
+    "completed_at": "2025-11-23T14:03:16.767563"
+  },
+  "answers": {
+    "Q1": "Type your answer here.  JW 1",
+    "Q2": "Type your answer here.  JW 2",
+    "Q3": "Type your answer here.X",
+    "Q4": "Type your answer here.XXX",
+    "Q5": "Type your answer here.XXX",
+    "Q6": "Type your answer here.",
+    "Q7": "Type your answer here.",
+    "Q8": "Type your answer here.",
+    "Q9": "Type your answer here.",
+    "Q10": "Type your answer here.",
+    "Q11": "Type your answer here.",
+    "Q12": "Type your answer here.",
+    "Q13": "Type your answer here.",
+    "Q14": "Type your answer here.",
+    "Q15": "Type your answer here."
+  },
+  "group_parameters": {
+    "line_slope": 2.2770063989853444,
+    "line_intercept": -1.3068506253232728,
+    "hidden_func_a": 1.1488059961773678,
+    "hidden_func_b": -3.3886289339685405,
+    "hidden_func_c": 3.0495509241949463,
+    "num_mountain_peaks": 5
+  },
+  "questions": {
+    "Q1": "In your own words, what does 'global error' or 'loss' measure in this plot?",
+    "Q2": "If we changed the slope or intercept of the line, how would that change the loss?",
+    "Q3": "How do the residual lines (the dashed vertical lines) help you understand the local error at each point?",
+    "Q4": "Can you make the global error small even if a few points still have relatively large errors? Describe a situation where this happens and why.",
+    "Q5": "Suppose you add one very extreme outlier point far away from the others. Predict how this will affect the best-fit line and the global error.",
+    "Q6": "Describe how your guesses for (m, b) moved over time. Did you follow any systematic strategy?",
+    "Q7": "Look at the MSE landscape plot. How close was your best guess to (a) the approximate global minimum on the grid, and (b) the least-squares solution from the data? What does this tell you about optimizing only based on the global error?",
+    "Q8": "In our earlier line-fitting exercise, you could see the data, the line, and the residuals. In this game, you only saw the MSE. How is this situation similar to how many machine learning models are trained?",
+    "Q9": "What strategies did your group use to choose new values of x within the allowed range?",
+    "Q10": "How did the 'warmer/colder' feedback influence your choices?",
+    "Q11": "Imagine that even the scatter plot of your guesses was hidden, and you only saw the table of (x, f(x)). Would you still be able to find a good minimum? How?",
+    "Q12": "Describe your group's strategy for choosing new (x, y) locations. How did you decide where to sample next after finding a high point?",
+    "Q13": "Look at the revealed landscape. How many local peaks can you see? Did your group spend most of its time near one peak, or did you explore multiple regions?",
+    "Q14": "Compare your best sample to the true global peak shown on the plot. Were you close to the global maximum, or did you end up stuck near a local maximum?",
+    "Q15": "Explain how this mountain-peak search is similar to what happens in machine learning when an algorithm is trying to optimize a loss function that has many 'bumps' (local minima or maxima). What risks does a model face if it only explores one region of the loss landscape?"
+  }
+}
