@@ -453,6 +453,319 @@ def quick_setup(chapter: int):
     )
 
 
+# ============================================================================
+# Gradient Descent Utilities for Lab 2
+# ============================================================================
+
+def compute_gradient_numeric(x, func, h=1e-5):
+    """
+    Compute numerical gradient using central difference method.
+
+    For teaching gradient descent concepts without requiring calculus.
+
+    Args:
+        x: Point at which to compute gradient (scalar, 1D array, or 2D array)
+        func: Function to compute gradient of (must accept x and return scalar)
+        h: Step size for numerical differentiation (default: 1e-5)
+
+    Returns:
+        Gradient at x (same shape as x)
+        - For scalar x: returns scalar gradient
+        - For array x: returns array of partial derivatives
+
+    Examples:
+        >>> # 1D case: f(x) = x^2
+        >>> def f(x): return x**2
+        >>> compute_gradient_numeric(3.0, f)
+        6.0
+
+        >>> # 2D case: f(m, b) = m^2 + b^2
+        >>> def f(params): return params[0]**2 + params[1]**2
+        >>> compute_gradient_numeric(np.array([1.0, 2.0]), f)
+        array([2., 4.])
+    """
+    import numpy as np
+
+    # Handle scalar case
+    if np.isscalar(x):
+        grad = (func(x + h) - func(x - h)) / (2 * h)
+        return grad
+
+    # Handle array case (1D or 2D parameter vector)
+    x = np.asarray(x, dtype=float)
+    grad = np.zeros_like(x)
+
+    for i in range(len(x)):
+        x_forward = x.copy()
+        x_backward = x.copy()
+
+        x_forward[i] += h
+        x_backward[i] -= h
+
+        grad[i] = (func(x_forward) - func(x_backward)) / (2 * h)
+
+    return grad
+
+
+def gradient_descent_step(x, grad, learning_rate):
+    """
+    Perform single gradient descent update step.
+
+    Implements the universal update rule: new = old - learning_rate × gradient
+
+    Args:
+        x: Current parameter value(s) (scalar or array)
+        grad: Gradient at current position (same shape as x)
+        learning_rate: Step size multiplier (positive scalar)
+
+    Returns:
+        Updated parameter value(s) after one GD step
+
+    Examples:
+        >>> # 1D case
+        >>> gradient_descent_step(3.0, 6.0, 0.1)
+        2.4
+
+        >>> # 2D case
+        >>> gradient_descent_step(np.array([1.0, 2.0]), np.array([2.0, 4.0]), 0.1)
+        array([0.8, 1.6])
+    """
+    import numpy as np
+
+    if np.isscalar(x):
+        return x - learning_rate * grad
+    else:
+        return np.asarray(x) - learning_rate * np.asarray(grad)
+
+
+def run_gradient_descent(x0, func, learning_rate, max_steps=100, tol=1e-6,
+                        return_gradients=True):
+    """
+    Run full gradient descent optimization from starting point.
+
+    Args:
+        x0: Starting point (scalar or array)
+        func: Function to minimize (must accept x and return scalar)
+        learning_rate: Step size for gradient descent
+        max_steps: Maximum number of iterations (default: 100)
+        tol: Convergence tolerance on function value change (default: 1e-6)
+        return_gradients: If True, include gradients in history (default: True)
+
+    Returns:
+        dict with keys:
+            'x': list of parameter values at each step (length: max_steps + 1)
+            'f': list of function values at each step (length: max_steps + 1)
+            'grad': list of gradients at each step (length: max_steps, optional)
+            'converged': True if converged before max_steps
+            'n_steps': number of steps taken
+
+    Examples:
+        >>> # Minimize f(x) = (x-2)^2
+        >>> def f(x): return (x - 2)**2
+        >>> history = run_gradient_descent(0.0, f, learning_rate=0.1, max_steps=50)
+        >>> print(f"Final x: {history['x'][-1]:.4f}, Final f: {history['f'][-1]:.6f}")
+    """
+    import numpy as np
+
+    # Initialize history
+    history = {
+        'x': [np.asarray(x0) if not np.isscalar(x0) else x0],
+        'f': [func(x0)],
+        'grad': [] if return_gradients else None,
+        'converged': False,
+        'n_steps': 0
+    }
+
+    x_current = np.asarray(x0) if not np.isscalar(x0) else x0
+
+    # Gradient descent loop
+    for step in range(max_steps):
+        # Compute gradient at current position
+        grad = compute_gradient_numeric(x_current, func)
+
+        if return_gradients:
+            history['grad'].append(grad)
+
+        # Update parameters
+        x_new = gradient_descent_step(x_current, grad, learning_rate)
+        f_new = func(x_new)
+
+        # Store history
+        history['x'].append(x_new)
+        history['f'].append(f_new)
+        history['n_steps'] = step + 1
+
+        # Check convergence
+        if abs(f_new - history['f'][-2]) < tol:
+            history['converged'] = True
+            break
+
+        x_current = x_new
+
+    return history
+
+
+def plot_gd_path_1d(history, func=None, show_function=False, x_range=None,
+                   figsize=(12, 8), title="Gradient Descent Path (1D)"):
+    """
+    Visualize gradient descent path on 1D function.
+
+    Args:
+        history: Dictionary from run_gradient_descent() containing 'x' and 'f'
+        func: Function being optimized (optional, needed if show_function=True)
+        show_function: If True, plot the underlying function curve
+        x_range: Tuple (x_min, x_max) for plotting function (if None, auto-detect)
+        figsize: Figure size (default: (12, 8))
+        title: Plot title
+
+    Returns:
+        matplotlib figure and axes objects
+    """
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    fig, ax = plt.subplots(figsize=figsize, dpi=100)
+
+    # Extract history
+    x_history = np.array(history['x'])
+    f_history = np.array(history['f'])
+
+    # Plot function curve if requested
+    if show_function and func is not None:
+        if x_range is None:
+            # Auto-detect range
+            x_min = min(x_history) - 1.0
+            x_max = max(x_history) + 1.0
+        else:
+            x_min, x_max = x_range
+
+        x_plot = np.linspace(x_min, x_max, 300)
+        f_plot = np.array([func(x) for x in x_plot])
+
+        ax.plot(x_plot, f_plot, 'b-', linewidth=2, alpha=0.3, label='Function')
+
+    # Plot GD path as scatter points
+    colors = plt.cm.viridis(np.linspace(0, 1, len(x_history)))
+
+    for i in range(len(x_history)):
+        marker = 'o' if i == 0 else ('*' if i == len(x_history)-1 else 'o')
+        size = 150 if i == 0 or i == len(x_history)-1 else 80
+        alpha = 1.0 if i == 0 or i == len(x_history)-1 else 0.6
+
+        ax.scatter(x_history[i], f_history[i], c=[colors[i]],
+                  marker=marker, s=size, alpha=alpha, edgecolors='black',
+                  linewidths=1.5, zorder=3)
+
+    # Add path arrows
+    for i in range(len(x_history) - 1):
+        ax.annotate('', xy=(x_history[i+1], f_history[i+1]),
+                   xytext=(x_history[i], f_history[i]),
+                   arrowprops=dict(arrowstyle='->', color='red', lw=1.5, alpha=0.5))
+
+    # Labels and formatting
+    ax.set_xlabel('x', fontsize=12)
+    ax.set_ylabel('f(x)', fontsize=12)
+    ax.set_title(title, fontsize=14, fontweight='bold')
+    ax.grid(True, alpha=0.3)
+
+    # Add convergence info
+    info_text = f"Steps: {history['n_steps']}\n"
+    info_text += f"Start: x={x_history[0]:.4f}, f={f_history[0]:.4f}\n"
+    info_text += f"End: x={x_history[-1]:.4f}, f={f_history[-1]:.4f}\n"
+    info_text += f"Converged: {history.get('converged', False)}"
+
+    ax.text(0.02, 0.98, info_text, transform=ax.transAxes,
+           fontsize=10, verticalalignment='top',
+           bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8))
+
+    if show_function:
+        ax.legend(fontsize=10)
+
+    plt.tight_layout()
+    return fig, ax
+
+
+def plot_gd_path_2d_contour(history, func, bounds, n_grid=50,
+                           figsize=(12, 10), title="Gradient Descent Path (2D)"):
+    """
+    Visualize gradient descent path on 2D contour plot.
+
+    Args:
+        history: Dictionary from run_gradient_descent() with 'x' (each x is [x0, x1])
+        func: Function being optimized (must accept 2D array and return scalar)
+        bounds: Tuple of ((x0_min, x0_max), (x1_min, x1_max)) for contour plot
+        n_grid: Number of grid points per dimension (default: 50)
+        figsize: Figure size (default: (12, 10))
+        title: Plot title
+
+    Returns:
+        matplotlib figure and axes objects
+    """
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    fig, ax = plt.subplots(figsize=figsize, dpi=100)
+
+    # Create grid for contour plot
+    (x0_min, x0_max), (x1_min, x1_max) = bounds
+    x0_grid = np.linspace(x0_min, x0_max, n_grid)
+    x1_grid = np.linspace(x1_min, x1_max, n_grid)
+    X0, X1 = np.meshgrid(x0_grid, x1_grid)
+
+    # Evaluate function on grid
+    Z = np.zeros_like(X0)
+    for i in range(n_grid):
+        for j in range(n_grid):
+            Z[i, j] = func(np.array([X0[i, j], X1[i, j]]))
+
+    # Plot contours
+    contour = ax.contour(X0, X1, Z, levels=20, cmap='viridis', alpha=0.6)
+    ax.clabel(contour, inline=True, fontsize=8)
+
+    # Plot filled contours for better visualization
+    ax.contourf(X0, X1, Z, levels=20, cmap='viridis', alpha=0.3)
+
+    # Extract GD path
+    x_history = np.array(history['x'])
+
+    # Plot GD path
+    ax.plot(x_history[:, 0], x_history[:, 1], 'r-', linewidth=2,
+           alpha=0.7, label='GD Path')
+
+    # Plot start and end points
+    ax.scatter(x_history[0, 0], x_history[0, 1], c='green', marker='o',
+              s=200, edgecolors='black', linewidths=2, zorder=5, label='Start')
+    ax.scatter(x_history[-1, 0], x_history[-1, 1], c='red', marker='*',
+              s=300, edgecolors='black', linewidths=2, zorder=5, label='End')
+
+    # Add arrows to show direction
+    for i in range(0, len(x_history) - 1, max(1, len(x_history)//10)):
+        ax.annotate('', xy=(x_history[i+1, 0], x_history[i+1, 1]),
+                   xytext=(x_history[i, 0], x_history[i, 1]),
+                   arrowprops=dict(arrowstyle='->', color='red', lw=2))
+
+    # Labels and formatting
+    ax.set_xlabel('Parameter 0', fontsize=12)
+    ax.set_ylabel('Parameter 1', fontsize=12)
+    ax.set_title(title, fontsize=14, fontweight='bold')
+    ax.grid(True, alpha=0.3)
+    ax.legend(fontsize=10, loc='best')
+
+    # Add convergence info
+    f_history = np.array(history['f'])
+    info_text = f"Steps: {history['n_steps']}\n"
+    info_text += f"Start: f={f_history[0]:.4f}\n"
+    info_text += f"End: f={f_history[-1]:.4f}\n"
+    info_text += f"Converged: {history.get('converged', False)}"
+
+    ax.text(0.02, 0.98, info_text, transform=ax.transAxes,
+           fontsize=10, verticalalignment='top',
+           bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8))
+
+    plt.tight_layout()
+    return fig, ax
+
+
 if __name__ == "__main__":
     # Test the module
     print("ML Animated Colab Helpers")

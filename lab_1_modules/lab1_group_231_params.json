@@ -1,0 +1,12 @@
+{
+  "group_code": 231,
+  "created_at": "2025-11-24T13:00:31.511834",
+  "parameters": {
+    "line_slope": 1.6889642449729205,
+    "line_intercept": 0.8420911608554329,
+    "hidden_func_a": 1.1400651052836874,
+    "hidden_func_b": -1.4772424406766698,
+    "hidden_func_c": 6.537765820025189,
+    "num_mountain_peaks": 5
+  }
+}
