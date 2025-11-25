@@ -41,18 +41,20 @@
 
 **What you do:** Apply GD to the same hidden function from Lab 1 Module 4. Watch it automatically find the minimum.
 
-**Q3 - PREDICTION:** ⚡ Starting from x = 0.0, predict what will happen with three learning rates:
-- **LR = 0.05:** Will this converge quickly or slowly?
+**Q3 - PREDICTION:** ⚡ Starting from x = 0.0, predict what will happen with five learning rates:
+- **LR = 0.01:** Will this converge quickly or slowly?
+- **LR = 0.05:** Will this converge faster than 0.01?
 - **LR = 0.4:** Will this converge faster? Any risks?
 - **LR = 1.0:** Will this be fastest? Or cause problems?
+- **LR = 3.0:** What do you expect with such a large learning rate?
 
 **Prediction:**
 
-<br><br>
+<br><br><br>
 
 **Result after running:**
 
-<br><br>
+<br><br><br>
 
 **Q4.** Compare gradient descent to your manual search in Lab 1 Module 4:
 - Which was faster at finding the minimum?
@@ -63,6 +65,8 @@
 **Q5.** Based on the visualizations:
 - How does step size relate to (a) gradient magnitude and (b) learning rate?
 - Why do steps get smaller as you approach the minimum?
+- What happens with LR = 1.0? Does it converge smoothly?
+- What happens with LR = 3.0? Can you explain this behavior?
 
 <br><br><br>
 
@@ -107,25 +111,27 @@
 
 ## Module 3: Learning Rate Exploration (~20 min)
 
-**What you do:** Deep dive into learning rate effects using a simple function. Run GD with LR = {0.001, 0.1, 0.8}.
+**What you do:** Deep dive into learning rate effects using a simple function. Run GD with LR = {0.001, 0.1, 0.8, 3.0}.
 
 **Q10 - PREDICTION:** ⚡ Starting from x = 10.0, predict for each learning rate:
 - **LR = 0.001 (very small):** Will it converge in 100 steps? How many steps needed?
 - **LR = 0.1 (moderate):** Will it converge quickly? How many steps?
 - **LR = 0.8 (large):** Will it converge? Oscillate? Diverge?
+- **LR = 3.0 (very large):** Will it converge at all? What do you expect?
 
 **Prediction:**
 
-<br><br><br>
+<br><br><br><br>
 
 **Result after running:**
 
-<br><br><br>
+<br><br><br><br>
 
 **Q11.** Describe the behavior for each LR category:
 - **Too small (0.001):** What happens? Why is this wasteful?
 - **Just right (0.1):** What makes this optimal?
 - **Too large (0.8):** What problems occur? Why?
+- **Way too large (3.0):** How quickly does it diverge? What does this tell you?
 
 <br><br><br><br>
 
