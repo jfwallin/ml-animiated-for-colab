@@ -1,0 +1,40 @@
+CELL 13 CONTENT (After Cleanup)
+======================================================================
+
+---
+
+## Section 3: Watch Learning Happen! (8-10 min)
+
+Now let's see gradient descent in action. You'll watch the network **learn** to solve XOR automatically.
+
+### What You'll See:
+- **Left panel**: Decision boundary evolving in real-time
+- **Right panel**: Loss decreasing as the network learns
+- **Training controls**: Step through learning at your own pace
+
+### Smart Initialization Strategy
+
+When you click **"Reset Network"**, the system tries **10 different random starting points** and automatically picks the one with the lowest initial loss. This is called **multi-start initialization**.
+
+**Why this helps:**
+- The loss landscape is like a bumpy terrain with many hills and valleys
+- Some random starting points are near deep valleys (good!) → fast convergence
+- Others are on plateaus or shallow valleys (bad!) → slow or no convergence
+- By trying multiple starts, we increase the odds of finding a good valley
+
+**The intuition:**
+- Imagine dropping 10 balls randomly on a hilly landscape
+- Each ball rolls to a different local low point
+- We pick the ball that found the **deepest valley** to start from
+- This gives gradient descent the best chance to find a great solution!
+
+**Real-world machine learning:**
+- Training often uses smart initialization strategies (Xavier, He initialization)
+- Advanced optimizers (Adam, RMSprop) adapt learning rates automatically
+- Large models sometimes run multiple training sessions and pick the best result
+
+**Try this:**
+1. Train until convergence or until stuck (loss stops decreasing)
+2. If stuck, click "Reset Network" to get a fresh starting point
+3. Notice how the initial loss varies - some starting points are much better!
+4. Compare: Does momentum help escape bad starting points?
