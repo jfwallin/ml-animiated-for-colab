@@ -1,0 +1,63 @@
+NARRATIVE REVIEW - Lab 4 Module 2 v3
+=====================================
+
+CELL 11 - Algorithm Explanation (NEW)
+--------------------------------------
+How Gradient Descent Works: Simple Rules, Powerful Results
+
+The Algorithm (in plain English):
+1. Forward pass: Calculate prediction from current weights
+2. Compute error: How wrong is the prediction?
+3. Backpropagation: Calculate which direction to adjust each weight
+4. Update weights: Take a small step in that direction
+5. Repeat until error is small enough
+
+The math behind it:
+- Derivatives tell us which direction makes error smaller
+- Chain rule connects output error back to every weight
+- Learning rate controls step size (too big = unstable, too small = slow)
+
+Despite ~100 lines of code, it's just these 5 steps repeated!
+
+Why Multiple Starting Points?
+The loss landscape has hills and valleys. Gradient descent rolls downhill from wherever it starts:
+- Good starting point: Near a deep valley (converges quickly)
+- Bad starting point: On a plateau or shallow valley (gets stuck)
+
+Multi-start strategy: Try 10 random starts, pick the one with lowest initial loss.
+This gives us the best "head start" down the hill!
+
+--------------------------------------
+
+CELL 15 - Smart Initialization (ENHANCED)
+------------------------------------------
+Smart Initialization Strategy
+
+When you click "Reset Network", the system tries 10 different random starting points
+and automatically picks the one with the lowest initial loss. This is called multi-start initialization.
+
+Why this helps:
+- The loss landscape is like a bumpy terrain with many hills and valleys
+- Some random starting points are near deep valleys (good!) = fast convergence
+- Others are on plateaus or shallow valleys (bad!) = slow or no convergence
+- By trying multiple starts, we increase the odds of finding a good valley
+
+The intuition:
+- Imagine dropping 10 balls randomly on a hilly landscape
+- Each ball rolls to a different local low point
+- We pick the ball that found the deepest valley to start from
+- This gives gradient descent the best chance to find a great solution!
+
+Try this:
+1. Train until convergence or until stuck (loss stops decreasing)
+2. If stuck, click "Reset Network" to get a fresh starting point
+3. Notice how the initial loss varies - some starting points are much better!
+4. Compare: Does momentum help escape bad starting points?
+
+--------------------------------------
+
+KEY NARRATIVE IMPROVEMENTS:
+1. Cell 1: Added "key insight" that complex code is just 4 simple steps repeated
+2. Cell 11: NEW - Explains algorithm clearly, emphasizes simplicity, explains multi-start
+3. Cell 15: ENHANCED - Better landscape analogy, ball-dropping intuition
+4. Throughout: Consistent metaphor of "rolling downhill" in loss landscape
