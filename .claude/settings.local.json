@@ -10,7 +10,8 @@
       "Bash(grep:*)",
       "Bash(timeout 30 python:*)",
       "Bash(pkill:*)",
-      "Bash(iconv:*)"
+      "Bash(iconv:*)",
+      "Bash(jupyter nbconvert:*)"
     ],
     "deny": [],
     "ask": []
