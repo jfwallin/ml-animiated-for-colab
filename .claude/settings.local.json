@@ -11,7 +11,9 @@
       "Bash(timeout 30 python:*)",
       "Bash(pkill:*)",
       "Bash(iconv:*)",
-      "Bash(jupyter nbconvert:*)"
+      "Bash(jupyter nbconvert:*)",
+      "Bash(done)",
+      "Bash(ls -la \"C:\\Users\\jwallin\\.claude\\plans\"\" | grep -i \"lab.*6|saliency \")"
     ],
     "deny": [],
     "ask": []
