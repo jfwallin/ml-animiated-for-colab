@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(git -C \"c:\\Users\\jwallin\\OneDrive\\python-experiments-2023\\ml-animated\\ml_animated\" log --oneline -20)",
-      "Bash(/c/Users/jwallin/anaconda3/python.exe:*)"
+      "Bash(/c/Users/jwallin/anaconda3/python.exe:*)",
+      "Bash(pip show:*)",
+      "Bash(python -m pip:*)",
+      "Bash(python3 -m pip:*)",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []
