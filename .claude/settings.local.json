@@ -1,19 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git add:*)",
-      "Bash(git commit -m \"$(cat <<''EOF''\nAdd Colab-compatible Ch01: Create Animation\n\n- Added attribution header with link to original work\n- Added setup cell with quick_setup(chapter=1)\n- Updated all file paths from relative to Colab paths (/content/ml_animated/)\n- Updated section 1 to note Colab requires no local installation\n- All animation generation and display functionality preserved\n- Chapter ready for testing in Google Colab\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
-      "Bash(git commit:*)",
-      "Bash(python:*)",
-      "Bash(cat:*)",
-      "Bash(git push:*)",
-      "Bash(grep:*)",
-      "Bash(timeout 30 python:*)",
-      "Bash(pkill:*)",
-      "Bash(iconv:*)",
-      "Bash(jupyter nbconvert:*)",
-      "Bash(done)",
-      "Bash(ls -la \"C:\\Users\\jwallin\\.claude\\plans\"\" | grep -i \"lab.*6|saliency \")"
+      "Bash(git -C \"c:\\Users\\jwallin\\OneDrive\\python-experiments-2023\\ml-animated\\ml_animated\" log --oneline -20)"
     ],
     "deny": [],
     "ask": []

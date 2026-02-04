@@ -9,7 +9,7 @@
 
 ### What You'll Learn Today
 
-In this lab, you'll discover how gradient descent automates the optimization process you manually performed in Lab 1:
+In this lab, you'll discover how gradient descent automates the optimization process:
 
 1. **The universal update rule** – How one formula powers all of machine learning
 2. **Gradient descent in action** – Watching algorithms navigate automatically
@@ -18,7 +18,7 @@ In this lab, you'll discover how gradient descent automates the optimization pro
 
 ### Lab Structure
 
-This lab consists of **5 modules** that you'll complete in order using **the same group code from Lab 1**:
+This lab consists of **5 modules** that you'll complete in order:
 
 | Module | Title | Time | Type |
 |--------|-------|------|------|
@@ -49,14 +49,14 @@ This lab consists of **5 modules** that you'll complete in order using **the sam
 ### AI Use Policy
 
 You may use AI tools (ChatGPT, Claude, etc.) to:
-- ✅ Explain concepts in different ways
-- ✅ Help understand error messages
-- ✅ Clarify what gradients mean mathematically
+- Explain concepts in different ways
+- Help understand error messages
+- Clarify what gradients mean mathematically
 
 You should NOT use AI tools to:
-- ❌ Generate complete answers to lab questions
-- ❌ Write code for you without understanding it
-- ❌ Do the thinking for you
+- Generate complete answers to lab questions
+- Write code for you without understanding it
+- Do the thinking for you
 
 **Remember:** The goal is to develop your own understanding of how gradient descent works.
 
@@ -119,18 +119,10 @@ If you're at `x = 5` on a function:
 
 **Q1.** If the gradient (slope) at a point is **positive**, which direction does gradient descent move? Why?
 
-**Answer:**
-
-<br><br>
-
 **Q2.** What happens to the step size if:
 - (a) The learning rate is very large (e.g., 10.0)?
 - (b) The gradient magnitude is very large?
 - (c) Both learning rate and gradient are small?
-
-**Answer:**
-
-<br><br><br>
 
 ---
 
@@ -139,30 +131,9 @@ If you're at `x = 5` on a function:
 **Time:** ~15 minutes
 **Type:** In-class
 
-### Learning Objectives
-
-- Apply gradient descent to 1D function optimization
-- Understand how learning rate affects convergence
-- Compare automated GD vs. manual search from Lab 1
-- See the same problem from Lab 1 solved automatically
-
 ### What You'll Do
 
-Watch gradient descent automatically find the minimum of the **same hidden parabola from Lab 1 Module 4** – but now without you having to manually search!
-
-### Connection to Lab 1
-
-**In Lab 1 Module 4, you:**
-- Manually chose x values with a slider
-- Got warm/cold feedback
-- Refined your guesses iteratively
-- Tried to find the minimum through trial and error
-
-**Today with Gradient Descent:**
-- GD computes the slope (gradient) automatically
-- GD moves downhill automatically
-- You only control the learning rate
-- Watch it find the minimum in seconds!
+Watch gradient descent automatically find the minimum of a hidden 1D function. Previously you would have had to search for this by hand — now GD does it for you.
 
 ### Key Concepts
 
@@ -171,33 +142,25 @@ Watch gradient descent automatically find the minimum of the **same hidden parab
 gradient ≈ (f(x + tiny_step) - f(x - tiny_step)) / (2 × tiny_step)
 ```
 - We approximate the slope without calculus
-- Measures how the function changes around the current point
 - Direction and magnitude tell us how to move
 
 **GD Update Process:**
 1. Start at initial position (e.g., x = 0)
 2. Compute gradient at current position
 3. Take a step: `new_x = old_x - learning_rate × gradient`
-4. Repeat until converged (or max iterations reached)
+4. Repeat until converged
 
 **Convergence:**
-- Steps get smaller as you approach the minimum (gradient → 0)
+- Steps get smaller as you approach the minimum (gradient approaches 0)
 - Function value decreases (going downhill)
-- Eventually, changes become tiny → convergence!
+- Eventually, changes become tiny — convergence!
 
 ### Interactive Elements
 
-**Interactive Tool:**
 1. **Starting x slider:** Choose where GD begins
 2. **Learning rate input:** Control step size
-3. **Run 1 Step button:** See one GD update
-4. **Run 10 Steps button:** See multiple updates
-5. **Reset button:** Start over with new parameters
-
-**Visualizations:**
-- **Left plot:** GD path in (x, f(x)) space (dots connected by arrows)
-- **Right plot:** Function value over iterations (convergence curve)
-- **Table:** Detailed step-by-step information
+3. **Run 1 Step / Run 10 Steps:** Watch GD updates
+4. **Visualizations:** GD path and convergence curve
 
 ### Learning Rates to Try
 
@@ -207,39 +170,12 @@ gradient ≈ (f(x + tiny_step) - f(x - tiny_step)) / (2 × tiny_step)
 
 ### Questions
 
-**Q3 (PREDICTION).** Starting from x = 0.0, predict what will happen with five learning rates:
-- **LR = 0.01:** Will this converge quickly or slowly?
-- **LR = 0.05:** Will this converge faster than 0.01?
-- **LR = 0.4:** Will this converge faster? Any risks?
-- **LR = 1.0:** Will this be fastest? Or cause problems?
-- **LR = 3.0:** What do you expect with such a large learning rate?
+**Q3 (PREDICTION).** Starting from x = 0.0, predict what will happen with five learning rates (0.01, 0.05, 0.4, 1.0, 3.0). Which will converge? Which might cause problems?
 
-**Your Prediction:**
-
-<br><br><br>
-
-**What Actually Happened:**
-
-<br><br><br>
-
-**Q4.** Compare gradient descent to your manual search in Lab 1 Module 4:
-- Which was faster at finding the minimum?
-- Which required more "attempts" or "steps"?
-- What advantage does GD have over manual guessing?
-
-**Answer:**
-
-<br><br><br>
-
-**Q5.** Based on the visualizations:
-- How does step size relate to: (a) the slope (gradient) magnitude, and (b) the learning rate?
-- Why do the steps get smaller as you approach the minimum?
-- What happens with LR = 1.0? Does it converge smoothly?
-- What happens with LR = 3.0? Can you explain this behavior?
-
-**Answer:**
-
-<br><br><br>
+**Q4.** Based on the visualizations:
+- How does step size relate to (a) gradient magnitude and (b) learning rate?
+- Why do steps get smaller near the minimum?
+- Describe what happens with LR = 1.0 and LR = 3.0.
 
 ---
 
@@ -248,28 +184,9 @@ gradient ≈ (f(x + tiny_step) - f(x - tiny_step)) / (2 × tiny_step)
 **Time:** ~20 minutes
 **Type:** In-class
 
-### Learning Objectives
-
-- Apply GD to 2D parameter optimization
-- Navigate the MSE landscape automatically
-- Compare GD path to your manual exploration in Lab 1
-- Understand multi-parameter gradient descent
-
 ### What You'll Do
 
-Watch gradient descent automatically optimize the slope (`m`) and intercept (`b`) to fit the **same line from Lab 1 Modules 2-3**.
-
-### Connection to Lab 1
-
-**In Lab 1 Module 3, you:**
-- Manually chose (m, b) values
-- Only saw MSE numbers (no data visualization)
-- Tried to navigate the parameter space by trial and error
-
-**Today with Gradient Descent:**
-- GD computes gradients for both `m` and `b`
-- GD navigates the MSE landscape automatically
-- You watch the path it takes on a contour plot
+Apply GD to optimize **two parameters simultaneously** — slope (`m`) and intercept (`b`) — to fit a line to data. Watch GD navigate the MSE landscape on a contour plot.
 
 ### Key Concepts
 
@@ -277,8 +194,8 @@ Watch gradient descent automatically optimize the slope (`m`) and intercept (`b`
 - Gradient is now a **vector** with two components:
   - ∂MSE/∂m: How MSE changes with slope
   - ∂MSE/∂b: How MSE changes with intercept
-- Points in the direction of steepest increase
-- GD moves opposite to this direction
+- The gradient has both **magnitude** (how steep) and **direction** (which way is steepest)
+- GD moves opposite to this direction — the direction of steepest descent
 
 **Update Rule (2 parameters):**
 ```
@@ -295,66 +212,17 @@ Both parameters update simultaneously!
 
 ### Visualizations
 
-**During GD:**
-- **Left plot:** MSE contour map with GD path
-  - Contours show MSE landscape
-  - Colored path shows GD trajectory
-  - Start (green) → End (red)
-- **Right plot:** MSE over iterations
-  - Shows convergence progress
-  - Should decrease monotonically (always going down)
-
-**Comparison with Lab 1:**
-- Your manual guesses from Lab 1 (if saved)
-- GD path
-- Least-squares solution (optimal)
-
-### Interactive Elements
-
-1. **Starting point sliders:** Choose initial (m, b)
-2. **Learning rate input:** Control step size
-3. **Number of steps:** How long to run GD
-4. **Run GD button:** Execute gradient descent
-5. **Learning rate comparison:** See LR = {0.01, 0.1, 0.5} side-by-side
+- **Left plot:** MSE contour map with GD path (start → end)
+- **Right plot:** MSE over iterations (convergence progress)
 
 ### Questions
 
-**Q6 (PREDICTION).** Starting from (0, 0), predict:
-- Will the GD path be straight or curved? Why?
-- Will GD find the same minimum you found in Lab 1?
+**Q5 (PREDICTION).** Starting from (0, 0), predict: will the GD path be straight or curved? Why?
 
-**Your Prediction:**
-
-<br><br>
-
-**What Actually Happened:**
-
-<br><br>
-
-**Q7.** Describe the shape of the GD path on the MSE contour plot:
-- Is it straight or curved? Why?
-- What happens to step size as GD approaches the minimum?
-
-**Answer:**
-
-<br><br><br>
-
-**Q8.** Compare GD to your manual exploration in Lab 1 Module 3:
-- Which was more efficient?
-- How many guesses did you make in Lab 1 vs. GD steps needed?
-
-**Answer:**
-
-<br><br><br>
-
-**Q9.** Based on the learning rate comparison (LR = 0.01, 0.1, 0.5):
-- Which LR converged fastest?
-- What happens with LR = 0.01? (Too slow?)
-- What happens with LR = 0.5? (Oscillation? Divergence?)
-
-**Answer:**
-
-<br><br><br>
+**Q6.** Describe the GD path and the learning rate comparison:
+- Is the path straight or curved? Why?
+- What happens to step size near the minimum?
+- Which learning rate (0.01, 0.1, 0.5) converged fastest, and what went wrong with the others?
 
 ---
 
@@ -362,13 +230,6 @@ Both parameters update simultaneously!
 
 **Time:** ~20 minutes
 **Type:** In-class
-
-### Learning Objectives
-
-- Understand the critical role of learning rate in GD
-- Predict and observe: slow convergence, fast convergence, oscillation, divergence
-- Develop intuition for choosing learning rates
-- Recognize learning rate as the most important hyperparameter
 
 ### What You'll Do
 
@@ -380,8 +241,6 @@ This function has:
 - Clear convergence behavior
 
 ### The Goldilocks Problem
-
-**Learning rate trade-offs:**
 
 | Learning Rate | Speed | Stability | Outcome |
 |--------------|-------|-----------|----------|
@@ -397,91 +256,17 @@ Starting from **x = 10.0**, you'll test:
 3. **LR = 0.8** (large) – Risky, might oscillate
 4. **LR = 3.0** (very large) – Likely to diverge
 
-### Key Concepts
-
-**Slow Convergence (LR too small):**
-- Each step is tiny
-- Makes progress but wastes time/computation
-- Eventually reaches minimum if given enough steps
-- In real ML: costs money, energy, time
-
-**Optimal Convergence (LR just right):**
-- Large enough steps for fast progress
-- Small enough to remain stable
-- Smooth monotonic decrease in loss
-- "Goldilocks zone"
-
-**Oscillation (LR too large):**
-- Overshoots the minimum
-- Bounces back and forth
-- Might still converge but inefficiently
-- Loss might increase temporarily
-
-**Divergence (LR way too large):**
-- Steps are so large you jump farther away
-- Function value explodes
-- Never converges
-- Complete failure!
-
-### Visualizations
-
-**Four-panel comparison:**
-- Each subplot shows one learning rate
-- GD path overlaid on the function f(x) = 0.5x²
-- Clear comparison of behaviors
-
-**Convergence curves:**
-- **Linear scale:** Shows absolute values
-- **Log scale:** Better for seeing convergence rates
-- Compare all four learning rates
-
-**Summary table:**
-- Steps taken
-- Final x value
-- Final f(x) value
-- Convergence status
-
-### Interactive Exploration
-
-**Try your own learning rates:**
-- Find the **largest LR that still converges**
-- Find the **smallest LR that converges in < 50 steps**
-- Find an LR that causes **dramatic divergence**
-
 ### Questions
 
-**Q10 (PREDICTION).** Starting from x = 10.0, predict for each learning rate:
-- **LR = 0.001:** Will it converge in 100 steps? Roughly how many steps needed?
-- **LR = 0.1:** Will it converge quickly? How many steps?
-- **LR = 0.8:** Will it converge? Oscillate? Diverge?
-- **LR = 3.0:** Will it converge at all? What do you expect?
+**Q7 (PREDICTION).** Starting from x = 10.0, predict: which learning rates will converge, which will oscillate, and which will diverge?
 
-**Your Prediction:**
-
-<br><br><br>
-
-**What Actually Happened:**
-
-<br><br><br>
-
-**Q11.** Describe the behavior for each LR category:
+**Q8.** Describe the behavior for each LR category:
 - **Too small (0.001):** What happens? Why is this wasteful?
-- **Just right (0.1):** What makes this optimal?
-- **Too large (0.8):** What problems occur? Why?
-- **Way too large (3.0):** How quickly does it diverge? What does this tell you?
+- **Just right (0.1):** What makes this work well?
+- **Too large (0.8):** What problems occur?
+- **Way too large (3.0):** What does divergence look like?
 
-**Answer:**
-
-<br><br><br><br>
-
-**Q12.** How would you choose a learning rate for a new optimization problem?
-- What strategy would you use?
-- What signs indicate your LR is too large? Too small?
-- Why is learning rate called a "hyperparameter"?
-
-**Answer:**
-
-<br><br><br>
+**Q9.** How would you choose a learning rate for a new problem? What signs tell you it's too large or too small?
 
 ---
 
@@ -490,48 +275,21 @@ Starting from **x = 10.0**, you'll test:
 **Time:** ~15 minutes
 **Type:** In-class
 
-### Learning Objectives
-
-- Understand that GD gets stuck at local optima
-- See that starting position determines which peak/valley you reach
-- Recognize this as a fundamental limitation of gradient-based optimization
-- Connect to neural network training challenges
-
 ### What You'll Do
 
-Run **gradient ascent** (uphill climbing) from multiple starting points on the **same mountain landscape from Lab 1 Module 5**.
+Run **gradient ascent** (uphill climbing) from multiple starting points on a landscape with multiple peaks.
 
 **Gradient Ascent vs. Descent:**
 - Gradient **descent** finds minima (valleys) – for minimizing loss
 - Gradient **ascent** finds maxima (peaks) – for this mountain exploration
 - Same algorithm, opposite sign: `new = old + learning_rate × gradient`
 
-### Connection to Lab 1
-
-**In Lab 1 Module 5, you:**
-- Manually explored a mountain landscape
-- Tried to find the highest peak
-- Discovered multiple local peaks
-
-**Today with Gradient Ascent:**
-- GD automatically climbs uphill
-- Starting position determines which peak you reach
-- GD can't "see" distant peaks – only local slope
-
 ### Key Concepts
 
 **Local vs. Global Optima:**
 
-**Local Maximum:**
-- Highest point in a nearby region
-- All neighboring points are lower
-- GD stops here (gradient becomes zero)
-- But there might be higher peaks elsewhere!
-
-**Global Maximum:**
-- The absolute highest point on the landscape
-- What we're trying to find
-- GD can miss this if it starts near a different peak
+- **Local Maximum:** Highest point in a nearby region — GD stops here because the gradient is zero, but higher peaks may exist elsewhere.
+- **Global Maximum:** The absolute highest point on the landscape — what we want, but GD may never reach it.
 
 **The Fundamental Problem:**
 - GD only uses **local information** (gradient at current point)
@@ -539,69 +297,22 @@ Run **gradient ascent** (uphill climbing) from multiple starting points on the *
 - Gets stuck at the first peak it climbs
 - Starting position is critical!
 
-### Interactive Elements
-
-**Multiple Starting Points:**
-- Try 4-6 different starting positions
-- Each runs gradient ascent independently
-- See which peak each one reaches
-- Compare final heights
-
-**Visualizations:**
-- **During exploration:** Path from each starting point
-- **After completion:**
-  - Full mountain landscape (contour plot)
-  - All GD paths overlaid
-  - Final positions marked
-  - True global peak highlighted
-
 ### Strategy Considerations
 
-**How to overcome local optima:**
+**How to overcome local optima in practice:**
 - **Multiple random starts:** Try many different starting points
-- **Simulated annealing:** Occasionally accept uphill moves
-- **Momentum:** Use velocity to escape shallow peaks
-- **Adaptive learning rates:** Adjust step size during search
-
-In real neural networks:
-- Researchers use **random initialization** (try many starting points)
-- **Momentum** and **Adam** optimizer help escape shallow minima
-- Sometimes local minima are "good enough"
-- Architecture design helps create "nicer" landscapes
+- **Momentum:** Use velocity to push past shallow peaks
+- **Adaptive learning rates:** Adam, RMSprop adjust step size automatically
+- **Stochastic GD:** Random noise helps escape shallow minima
 
 ### Questions
 
-**Q13 (PREDICTION).** Before running gradient ascent:
-- Starting at (1, 1): Which peak will GD reach?
-- Will it find the global maximum? Why or why not?
-- What if you start at (-2, 3)?
+**Q10 (PREDICTION).** Starting at (1, 1): will GD find the global maximum? Why or why not? Will different starting points reach different peaks?
 
-**Your Prediction:**
-
-<br><br>
-
-**What Actually Happened:** How many different peaks did you reach from different starting points?
-
-<br><br>
-
-**Q14.** Based on your experiments:
-- Did gradient ascent find the global maximum?
-- Why or why not?
-- How did starting position affect which peak was reached?
-- Can GD "see" distant peaks? Explain.
-
-**Answer:**
-
-<br><br><br><br>
-
-**Q15.** Connection to neural network training:
-- How is this mountain problem similar to training a neural network?
-- What strategies might help overcome getting stuck at local optima?
-- Why is neural network optimization still successful despite local minima?
-
-**Answer:**
-
-<br><br><br><br>
+**Q11.** Based on your experiments:
+- Did gradient ascent find the global maximum from every starting point?
+- Why can't GD "see" distant peaks?
+- What strategies might help overcome this limitation?
 
 ---
 
@@ -610,17 +321,13 @@ In real neural networks:
 Make sure you have:
 
 - [ ] Completed all 5 modules using **the same group code from Lab 1**
-- [ ] Answered all 15 questions (Q1-Q15)
-- [ ] Included predictions where asked (Q3, Q6, Q10, Q13)
+- [ ] Answered all 11 questions (Q1-Q11)
+- [ ] Included predictions where asked (Q3, Q5, Q7, Q10)
 - [ ] Described your observations and insights
-- [ ] Compared GD behavior to your Lab 1 manual exploration
-- [ ] Discussed your answers with your group members
 
 ---
 
 ## Key Takeaways
-
-By completing this lab, you should understand:
 
 ### 1. The Universal Update Rule
 
@@ -629,73 +336,29 @@ By completing this lab, you should understand:
 - Powers all gradient descent algorithms
 - Works for any differentiable function
 - Scales from 1 parameter to billions of parameters
-- Used in training all modern neural networks
 
-### 2. Gradient Descent Automates Lab 1
+### 2. From 1D to 2D and Beyond
 
-| Lab 1 Manual Process | Lab 2 Gradient Descent |
-|---------------------|------------------------|
-| You chose parameters by hand | GD computes optimal direction |
-| Got warm/cold feedback | Uses gradient (exact slope) |
-| Trial and error search | Systematic downhill movement |
-| Many guesses needed | Converges in fewer steps |
-| Required intuition | Purely algorithmic |
+| 1D (Module 1) | 2D (Module 2) | Neural Networks |
+|---------------|---------------|-----------------|
+| Gradient is a single number (slope) | Gradient is a vector with direction | Gradient has millions of components |
+| Move left or right | Move in any compass direction | Move in high-dimensional space |
+| One parameter to update | Two parameters update together | All weights update simultaneously |
 
 ### 3. Learning Rate is Critical
 
-**Too small:**
-- Wastes computation
-- Slow progress
-- Eventually converges (if patient enough)
-
-**Just right:**
-- Fast convergence
-- Stable descent
-- Optimal performance
-
-**Too large:**
-- Oscillation
-- Possible divergence
-- Unstable, unpredictable
-
-**Way too large:**
-- Rapid divergence
-- Complete failure
-- Loss explodes
+- **Too small:** Wastes computation, slow progress
+- **Just right:** Fast and stable convergence
+- **Too large:** Oscillation, possible divergence
 
 ### 4. Local Optima Problem
 
-**The Challenge:**
 - GD only uses local gradient information
-- Gets stuck at first minimum/maximum it reaches
+- Gets stuck at the first minimum/maximum it reaches
 - Starting position determines final solution
-- Can't "see" the global landscape
+- Solutions: random restarts, momentum, adaptive methods
 
-**Solutions in Practice:**
-- Multiple random initializations
-- Momentum-based optimizers
-- Adaptive learning rates (Adam, RMSprop)
-- Better architecture design
-- Sometimes "good enough" local minima
-
-### 5. Trade-offs and Hyperparameters
-
-**Hyperparameters you control:**
-- Learning rate (most important!)
-- Number of iterations
-- Starting position
-- Batch size (in mini-batch GD)
-
-**Trade-offs to balance:**
-- Speed vs. stability
-- Exploration vs. exploitation
-- Computation cost vs. solution quality
-
----
-
-## Connecting to AI and Machine Learning
-
-Everything you learned applies directly to training neural networks:
+### Connecting to AI and Machine Learning
 
 | Lab 2 Activity | Neural Network Training |
 |---------------|-------------------------|
@@ -706,104 +369,11 @@ Everything you learned applies directly to training neural networks:
 | Convergence curves | Training loss plots |
 | Gradient computation | Backpropagation |
 
-### Real-World Gradient Descent
-
-**In practice, neural networks:**
-- Have **millions to billions** of parameters
-- Use **mini-batch gradient descent** (not full-batch)
-- Apply **adaptive learning rates** (Adam, RMSprop)
-- Include **momentum** to smooth updates
-- Use **learning rate schedules** (start high, decay over time)
-- Employ **regularization** to prevent overfitting
-- Sometimes use **gradient clipping** to prevent explosions
-
-### Why GD Works Despite Limitations
-
-Even with local minima problems:
-- High-dimensional spaces have fewer "bad" local minima
-- Modern architectures create smoother landscapes
-- Good local minima are often sufficient
-- Practical tricks (momentum, adaptive LR) help navigation
-- Stochastic gradient descent adds beneficial noise
-
-### Next Steps in Your AI Journey
-
-**Building on this lab:**
-- Neural networks use GD to learn from data
-- Deep learning = GD + clever architectures
-- Understanding GD helps debug training problems
-- Learning rate tuning is an art and science
-- All modern AI relies on variations of gradient descent
-
-**Future topics:**
-- Stochastic gradient descent (SGD)
-- Mini-batch training
-- Backpropagation (computing gradients efficiently)
-- Optimizers: Adam, RMSprop, AdaGrad
-- Learning rate schedules and warm-up
-- Regularization and generalization
-
-Great work! You now understand the algorithm that powers modern AI! 🎉
-
----
-
-## Advanced Insights (Optional)
-
-### Why Does GD Converge?
-
-For **convex functions** (bowl-shaped like MSE for linear regression):
-- GD is **guaranteed** to reach the global minimum
-- Step size decreases naturally as gradient → 0
-- Convergence rate depends on learning rate and landscape shape
-
-For **non-convex functions** (like neural network loss):
-- Convergence to **global** minimum is not guaranteed
-- But convergence to **a** minimum is usually achieved
-- Theory is complex, but practice works well!
-
-### Learning Rate Schedules
-
-Instead of fixed learning rate, use schedules:
-
-**Step decay:** Reduce LR every N epochs
-```
-epoch 0-10: LR = 0.1
-epoch 11-20: LR = 0.01
-epoch 21-30: LR = 0.001
-```
-
-**Exponential decay:** `LR = initial_LR × decay_rate^epoch`
-
-**Cosine annealing:** LR follows cosine curve
-
-**Warm-up:** Start with tiny LR, gradually increase
-
-### Momentum
-
-Adds "velocity" to GD updates:
-```
-velocity = momentum × old_velocity - learning_rate × gradient
-new_parameter = old_parameter + velocity
-```
-
-**Benefits:**
-- Smooths out oscillations
-- Accelerates through flat regions
-- Helps escape shallow local minima
-- Used in almost all modern neural network training
-
-### Adaptive Learning Rates
-
-**Adam optimizer** (most popular):
-- Adapts learning rate for each parameter individually
-- Combines momentum + adaptive learning rates
-- Usually works well with minimal tuning
-- Default choice for many practitioners
+**In practice, neural networks** use mini-batch gradient descent, adaptive learning rates (Adam), momentum, learning rate schedules, and regularization — all building on the core ideas from this lab.
 
 ---
 
 **Questions or Issues?**
 - Check the LMS discussion board
 - Ask your instructor or TA
-- Review the lab modules for interactive exploration
 - Experiment with the notebooks to deepen understanding
